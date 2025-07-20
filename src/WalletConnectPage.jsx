@@ -1,3 +1,4 @@
+// src/WalletConnectPage.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for the "Go Back" button
 
@@ -9,6 +10,30 @@ function WalletConnectPage() {
     navigate('/'); // Navigates to the root path
   };
 
+  // Function to handle MetaMask connection and navigate
+  const handleConnectMetaMask = () => {
+    // In a real application, you would put your MetaMask connection logic here.
+    // For example:
+    // if (window.ethereum) {
+    //   window.ethereum.request({ method: 'eth_requestAccounts' })
+    //     .then(accounts => {
+    //       console.log("Connected with account:", accounts[0]);
+    //       navigate('/satellite-register'); // Navigate after successful connection
+    //     })
+    //     .catch(error => {
+    //       console.error("MetaMask connection failed:", error);
+    //       // Handle error, e.g., show a message to the user
+    //     });
+    // } else {
+    //   alert("Please install MetaMask!");
+    // }
+
+    // For now, we'll just navigate directly for demonstration
+    console.log("Attempting to connect with MetaMask...");
+    navigate('/satellite-register'); // Navigate to the satellite registration page
+  };
+
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white">
       <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">Connect Your Wallet</h1>
@@ -18,7 +43,9 @@ function WalletConnectPage() {
 
       {/* Placeholder for wallet connection UI */}
       <div className="w-full max-w-sm p-6 bg-white/5 border border-white/20 rounded-lg shadow-lg flex flex-col items-center gap-4">
-        <button className="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 rounded-md text-lg font-semibold transition-colors duration-200">
+        <button
+          onClick={handleConnectMetaMask} // Add the click handler
+          className="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 rounded-md text-lg font-semibold transition-colors duration-200">
           Connect MetaMask
         </button>
         <button className="w-full py-3 px-6 bg-purple-600 hover:bg-purple-700 rounded-md text-lg font-semibold transition-colors duration-200">

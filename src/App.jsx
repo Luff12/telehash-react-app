@@ -1,9 +1,12 @@
+// src/App.jsx
 import React from 'react';
-import { Routes, Route, useNavigate, Link } from 'react-router-dom'; // Import Link as well
+import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import './index.css';
 import BlurText from './components/BlurText.jsx';
 import WalletConnectPage from './WalletConnectPage.jsx';
-import AboutPage from './AboutPage.jsx'; // <--- Import the new AboutPage
+import AboutPage from './AboutPage.jsx';
+import SatelliteRegisterPage from './SatelliteRegisterPage.jsx';
+import RegisteredSatelliteDetailsPage from './RegisteredSatelliteDetailsPage.jsx'; // <--- Import the new component
 
 // This component contains all the content for your home page
 function HomeContent() {
@@ -94,20 +97,24 @@ function App() {
           <Route path="/" element={<HomeContent />} />
           {/* Route for the connect wallet page */}
           <Route path="/connect-wallet" element={<WalletConnectPage />} />
-          {/* <--- NEW: Route for the About page */}
+          {/* Route for the About page */}
           <Route path="/about" element={<AboutPage />} />
-          {/* NEW: Route for the Dashboard page (you'll need to create this component) */}
+          {/* Route for the Dashboard page (you'll need to create this component) */}
           <Route path="/dashboard" element={
             <div className="flex items-center justify-center min-h-screen text-4xl text-white">
               <h1 className="text-5xl font-bold">Dashboard Page</h1>
               <p className="mt-4 text-lg">This is where your dashboard content will go.</p>
             </div>
           } />
+          {/* Route for the Satellite Registration page */}
+          <Route path="/satellite-register" element={<SatelliteRegisterPage />} />
+          {/* NEW: Route for the Registered Satellite Details page */}
+          <Route path="/registered-satellite-details" element={<RegisteredSatelliteDetailsPage />} />
           {/* Optional: A fallback route for 404 Not Found pages */}
           <Route path="*" element={
             <div className="flex items-center justify-center min-h-screen text-4xl text-white">
               <h1 className="text-5xl font-bold">404 - Page Not Found</h1>
-              <p className="mt-4 text-lg">The page you are looking for does not exist.</p>
+              <p className="mt-4 text-lg">The page you are looking for does not inst.</p>
             </div>
           } />
         </Routes>
