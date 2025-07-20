@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from 'react';
 import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import './index.css';
@@ -29,11 +28,11 @@ function HomeContent() {
         <nav className="flex space-x-4">
           {/* Use Link for navigation buttons for proper SPA behavior */}
           <Link to="/dashboard" className="px-5 py-2 rounded-md border border-white/30 text-white/80 text-lg font-medium
-                                hover:bg-white/10 hover:text-white transition-all duration-200 cursor-pointer">
+                         hover:bg-white/10 hover:text-white transition-all duration-200 cursor-pointer">
             Dashboard
           </Link>
           <Link to="/about" className="px-5 py-2 rounded-md border border-white/30 text-white/80 text-lg font-medium
-                                hover:bg-white/10 hover:text-white transition-all duration-200 cursor-pointer">
+                         hover:bg-white/10 hover:text-white transition-all duration-200 cursor-pointer">
             About
           </Link>
         </nav>
@@ -72,7 +71,7 @@ function HomeContent() {
                 <div className="absolute top-1/2 left-1/2 w-48 h-48 -mt-24 -ml-24 [transform:translateX(180px)] md:[transform:translateX(240px)]">
                   {/* Satellite Image */}
                   <div className="absolute w-[80px] h-[80px] bg-satellite-image bg-contain bg-no-repeat bg-center animate-satellite-image-spin
-                                        top-1/2 left-1/2 -mt-[40px] -ml-[40px] ">
+                                   top-1/2 left-1/2 -mt-[40px] -ml-[40px] ">
                     <div className="absolute inset-0 shadow-lg rounded-full opacity-70"></div>
                   </div>
                 </div>
@@ -88,9 +87,11 @@ function HomeContent() {
 // The main App component handles the overarching layout and routes
 function App() {
   return (
-    <div className="bg-black bg-stars bg-cover bg-center bg-fixed text-white font-sans flex justify-center items-center min-h-screen box-border overflow-hidden">
+    // Outermost container for the global fixed background
+    <div className="fixed inset-0 bg-black bg-stars bg-cover bg-center text-white font-sans flex justify-center items-center overflow-hidden">
+      {/* Inner container for the main window content, which will scroll if needed */}
       <div className="w-full max-w-[1400px] bg-main-window bg-cover bg-center flex flex-col box-border p-5 md:p-10 lg:px-[50px] lg:py-[25px]
-                      h-screen overflow-y-auto overflow-x-hidden no-scrollbar">
+                      h-full overflow-y-auto overflow-x-hidden no-scrollbar"> {/* Use h-full here for inner div */}
         {/* Use Routes to define which component renders based on the URL */}
         <Routes>
           {/* Route for the home page */}
@@ -101,7 +102,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           {/* Route for the Dashboard page (you'll need to create this component) */}
           <Route path="/dashboard" element={
-            <div className="flex items-center justify-center min-h-screen text-4xl text-white">
+            <div className="flex flex-col items-center justify-center min-h-full text-white text-center">
               <h1 className="text-5xl font-bold">Dashboard Page</h1>
               <p className="mt-4 text-lg">This is where your dashboard content will go.</p>
             </div>
@@ -112,9 +113,9 @@ function App() {
           <Route path="/registered-satellite-details" element={<RegisteredSatelliteDetailsPage />} />
           {/* Optional: A fallback route for 404 Not Found pages */}
           <Route path="*" element={
-            <div className="flex items-center justify-center min-h-screen text-4xl text-white">
+            <div className="flex flex-col items-center justify-center min-h-full text-white text-center">
               <h1 className="text-5xl font-bold">404 - Page Not Found</h1>
-              <p className="mt-4 text-lg">The page you are looking for does not inst.</p>
+              <p className="mt-4 text-lg">The page you are looking for does not exist.</p>
             </div>
           } />
         </Routes>
